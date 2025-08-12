@@ -1,7 +1,7 @@
 import { useEffect } from "react"
 import { Link } from "react-router-dom"
 
-export function Popup({ isOpen, onClose, header, footer, children }) {
+export function Popup({ isOpen, onClose, heading, footer, children }) {
 
     useEffect(() => {
         if (!isOpen) return
@@ -11,6 +11,7 @@ export function Popup({ isOpen, onClose, header, footer, children }) {
         document.addEventListener('keydown', onKeyDown)
         return () => document.removeEventListener('keydown', onKeyDown)
     }, [isOpen, onClose])
+    
 
 
     if (!isOpen) return null
@@ -18,7 +19,7 @@ export function Popup({ isOpen, onClose, header, footer, children }) {
         <article className="popup">
            
             <header className="popup-header">
-                {header}
+                {heading}
                 <button className="popup-close-btn" onClick={onClose}>✕</button>
             </header>
             
@@ -26,8 +27,6 @@ export function Popup({ isOpen, onClose, header, footer, children }) {
             
             <footer className="popup-footer">
                 {footer}
-                <input type="text" placeholder="Type a message..." />
-                <button className="btn-send-popup">Send</button>
             </footer>
 
         </article>

@@ -67,6 +67,7 @@ function save(toy) {
     if (toy._id) {
         return storageService.put(STORAGE_KEY, toy)
     } else {
+        toy.createdAt = Date.now()
         return storageService.post(STORAGE_KEY, toy)
     }
 }
@@ -78,7 +79,7 @@ function getEmptyToy() {
         inStock: '',
         imgUrl: `https://robohash.org/${utilService.getRandomIntInclusive(1, 10)}?set=set3`,
         labels: [],
-        createdAt: Date.now(),
+        createdAt: null,
     }
 }
 

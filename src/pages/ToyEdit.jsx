@@ -3,8 +3,8 @@ import { toyService } from "../services/toy.service-local.js"
 import { showErrorMsg, showSuccessMsg } from "../services/event-bus.service.js"
 import { saveToy } from "../store/actions/toy.actions.js"
 import { Link, useNavigate, useParams } from "react-router-dom"
-// import { useOnlineStatus } from "../hooks/useOnlineStatus.js"
-// import { useConfirmTabClose } from "../hooks/useConfirmTabClose.js"
+import { useOnlineStatus } from "../hooks/useOnlineStatus.js"
+import { useConfirmTabClose } from "../hooks/useConfirmTabClose.js"
 
 
 export function ToyEdit() {
@@ -12,17 +12,16 @@ export function ToyEdit() {
     const [toyToEdit, setToyToEdit] = useState(toyService.getEmptyToy())
     const { toyId } = useParams()
 
-    // const isOnline = useOnlineStatus()
-    // const setHasUnsavedChanges = useConfirmTabClose()
+    const isOnline = useOnlineStatus()
+    const setHasUnsavedChanges = useConfirmTabClose()
     
-
     useEffect(() => {
         if (toyId) loadToy()
     }, [])
 
     function loadToy() {
         toyService.getById(toyId)
-            .then(toy => setToyToEdit(toy))
+            .then(setToyToEdit)        //same: toy => setToyToEdit(toy)
             .catch(err => {
                 console.log('Had issues in toy edit', err)
                 navigate('/toy')
@@ -33,7 +32,7 @@ export function ToyEdit() {
         let { value, type, name: field } = target
         value = type === 'number' ? +value : value
         setToyToEdit((prevToy) => ({ ...prevToy, [field]: value }))
-        // setHasUnsavedChanges(true)
+        setHasUnsavedChanges(true)
     }
 
     function onSaveToy(ev) {
@@ -78,9 +77,9 @@ export function ToyEdit() {
                         <button>{toyToEdit._id ? 'Save' : 'Add'}</button>
                         <Link className="btn" to="/toy">Cancel</Link>
                     </div>
-                    {/* <section>
+                    <section>
                         <h1>{isOnline ? '✅ Online' : '❌ Disconnected'}</h1>
-                    </section> */}
+                    </section>
                 </form>
             </section>
         </>

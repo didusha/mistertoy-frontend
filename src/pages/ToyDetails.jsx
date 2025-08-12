@@ -53,7 +53,7 @@ export function ToyDetails() {
             <button className="chat-icon-btn" onClick={openChat}>💬</button>
             <Popup isOpen={isChatOpen}
                 onClose={closeChat}
-                header={`Lets Chat`}>
+                heading={`Lets Chat!`}>
                 <Chat />
             </Popup>
 
