@@ -36,15 +36,26 @@ export function ToyDetails() {
 
     return (
         <section className="toy-details">
-
-            <h1>Toy Name : {toy.name}</h1>
-            <h5>Price: ${toy.price}</h5>
-            <p>🧸</p>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                Animi voluptas cumque tempore, aperiam sed dolorum rem!
-                Nemo quidem, placeat perferendis tempora aspernatur sit,
-                explicabo veritatis corrupti perspiciatis repellat, enim
-                quibusdam!</p>
+            <div className="detail-container flex">
+                <div>
+                <h1>Toy Name : {toy.name}</h1>
+                <h5>Price: ${toy.price}</h5>
+                {!!toy.labels?.length && (
+                    <p>Labels: <span>{toy.labels.join(' ,')}</span></p>
+                )}
+                <p className={toy.inStock ? 'green' : 'red'}>
+                    {toy.inStock ? 'In stock' : 'Not in stock'}
+                </p>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                    Animi voluptas cumque tempore, aperiam sed dolorum rem!
+                    Nemo quidem, placeat perferendis tempora aspernatur sit,
+                    explicabo veritatis corrupti perspiciatis repellat, enim
+                    quibusdam!</p>
+                    </div>
+                <div>
+                <img src={toy.imgUrl} alt="" />
+                </div>
+            </div>
             <Link className="btn" to={`/toy/edit/${toy._id}`}>Edit</Link> &nbsp;
             <Link className="btn" to={`/toy`}>Back</Link>
             {/* <p>

@@ -4,6 +4,16 @@ import { utilService } from './util.service.js'
 import { userService } from './user.service-local.js'
 
 const STORAGE_KEY = 'toyDB'
+const LABELS = [
+    'On wheels',
+    'Box game',
+    'Art',
+    'Baby',
+    'Doll',
+    'Puzzle',
+    'Outdoor',
+    'Battery Powered',
+]
 _createToys()
 
 export const toyService = {
@@ -13,7 +23,8 @@ export const toyService = {
     remove,
     getEmptyToy,
     // getRandomToy,
-    getDefaultFilter
+    getDefaultFilter,
+    getToyLabels,
 }
 
 function query(filterBy = {}) {
@@ -87,11 +98,13 @@ function getDefaultFilter() {
     return { txt: '', maxPrice: '', labels: [], inStock: '', sortField: '', sortDir: 1, createdAt: null }
 }
 
+function getToyLabels() {
+    return [...LABELS]
+}
+
 function _createToys() {
     let toys = storageService.query(STORAGE_KEY)
     if (!toys || !toys.length) {
-        const labels = ['on-wheels', 'box-game', 'art', 'baby', 'doll', 'puzzle',
-            'outdoor', 'battery-powered']
         const names = ['Speedster Car', 'Coloring Kit', 'Baby Rattle', 'Puzzle Master',
             'Outdoor Explorer', 'Dollhouse Deluxe', 'Battery Bot', 'Box Game Challenge',
             'Artistic Easel', 'Mini Scooter']
@@ -101,7 +114,7 @@ function _createToys() {
                 _id: utilService.makeId(),
                 name: names[utilService.getRandomIntInclusive(0, names.length - 1)],
                 inStock: Math.random() < 0.5 ? true : false,
-                labels: [labels[utilService.getRandomIntInclusive(0, labels.length - 1)]],
+                labels: [LABELS[utilService.getRandomIntInclusive(0, LABELS.length - 1)]],
                 imgUrl: `https://robohash.org/${i + 1}?set=set3`,
                 price: utilService.getRandomIntInclusive(30, 250),
                 createdAt: Date.now()

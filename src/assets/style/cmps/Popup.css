@@ -1,3 +1,11 @@
+.popup-overlay {
+    position: fixed;
+    inset: 0;
+
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 3;
+}
+
 .popup {
     position: absolute;
     right: .1rem;
@@ -9,6 +17,7 @@
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
     overflow: hidden;
     height: 25rem;
+    z-index: 100;
 }
 
 .popup-header {
@@ -35,7 +44,7 @@
 
 .popup-footer input {
     /* flex: 1; */
-    padding: 0 ;
+    padding: 0;
     height: 2rem;
     width: 100%;
     border: 1px solid #ccc;
@@ -54,7 +63,7 @@
     position: absolute;
     bottom: 3.5rem;
     right: -.5rem;
-    background-color: #6d4702;
+    background: #b77701;
     padding: 0;
     font-size: 1.5rem;
 }

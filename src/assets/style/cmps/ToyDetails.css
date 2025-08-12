@@ -1,0 +1,7 @@
+.details-container{
+    display: flex;
+}
+
+.details-container img{
+    max-width: 37rem;
+}
