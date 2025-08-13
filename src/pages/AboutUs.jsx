@@ -31,7 +31,7 @@ export function AboutUs() {
                 <APIProvider apiKey={'AIzaSyBcLlKvJiWUP1ytSSJ3fbYlGiwZrdNGsQM'}>
                     <Map
                         mapId={'mapid-123'}
-                        defaultZoom={11}
+                        defaultZoom={8}
                         defaultCenter={mapCenter}
                         gestureHandling={'greedy'}
                         disableDefaultUI={true}
