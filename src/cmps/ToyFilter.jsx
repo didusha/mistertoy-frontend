@@ -2,7 +2,10 @@
 
 import { useEffect, useRef, useState } from "react"
 import { utilService } from "../services/util.service.js"
-
+import InputLabel from '@mui/material/InputLabel'
+import MenuItem from '@mui/material/MenuItem'
+import Select from '@mui/material/Select'
+import Chip from '@mui/material/Chip'
 
 export function ToyFilter({ filterBy, onSetFilter }) {
 
@@ -15,8 +18,12 @@ export function ToyFilter({ filterBy, onSetFilter }) {
     }, [filterByToEdit])
 
     function handleChange({ target }) {
+        console.log("🚀 ~ handleChange ~ target:", target)
         const field = target.name
+        console.log("🚀 ~ handleChange ~ field:", field)
         let value = target.value
+        console.log("🚀 ~ handleChange ~ value:", value)
+
         switch (target.type) {
             case 'number':
             case 'range':
@@ -39,7 +46,6 @@ export function ToyFilter({ filterBy, onSetFilter }) {
             default:
                 break
         }
-
         setFilterByToEdit((prevFilter) => ({ ...prevFilter, [field]: value }))
     }
 
@@ -68,14 +74,21 @@ export function ToyFilter({ filterBy, onSetFilter }) {
                         onChange={handleChange}
                     />
 
-                    <label htmlFor="inStock">In Stock:</label>
+                    {/* <label htmlFor="inStock">In Stock:</label>
                     <select id="inStock" name="inStock" value={inStock === undefined ? '' : inStock} onChange={handleChange}>
                         <option value="">All</option>
                         <option value="true">In Stock</option>
                         <option value="false">Out of Stock</option>
-                    </select>
+                    </select> */}
 
-                    <label htmlFor="labels">Labels:</label>
+                    <InputLabel id="inStock">In Stock</InputLabel>
+                    <Select id="inStock" name="inStock" value={inStock} onChange={handleChange}>
+                        <MenuItem value="">All</MenuItem>
+                        <MenuItem value="true">In Stock</MenuItem>
+                        <MenuItem value="false">Out of Stock</MenuItem>
+                    </Select>
+
+                    {/* <label htmlFor="labels">Labels:</label>
                     <select name="labels" multiple value={labels} onChange={handleChange}>
                         <option value="art">Art</option>
                         <option value="puzzle">Puzzle</option>
@@ -85,7 +98,35 @@ export function ToyFilter({ filterBy, onSetFilter }) {
                         <option value="box-game">Box game</option>
                         <option value="outdoor">Outdoor</option>
                         <option value="battery-powered">Battery Powered</option>
-                    </select>
+                    </select> */}
+
+                    <InputLabel id="labels">Labels</InputLabel>
+                    <Select
+                        labelId="labels"
+                        id="labels"
+                        name="labels"
+                        multiple
+                        value={labels}
+                        onChange={handleChange}
+                    // input={<OutlinedInput id="select-multiple-chip" label="Chip" />}
+                    // renderValue={(selected) => (
+                    //     <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 0.5 }}>
+                    //         {selected.map((value) => (
+                    //             <Chip key={value} label={value} />
+                    //         ))}
+                    //     </Box>
+                    // )}
+                    // MenuProps={MenuProps}
+                    >
+                        <MenuItem value="art">Art</MenuItem>
+                        <MenuItem value="puzzle">Puzzle</MenuItem>
+                        <MenuItem value="baby">Baby</MenuItem>
+                        <MenuItem value="doll">Doll</MenuItem>
+                        <MenuItem value="on-wheels">On wheels</MenuItem>
+                        <MenuItem value="box-game">Box game</MenuItem>
+                        <MenuItem value="outdoor">Outdoor</MenuItem>
+                        <MenuItem value="battery-powered">Battery Powered</MenuItem>
+                    </Select>
 
                     <div>
                         <label htmlFor="sortField">Sort by:</label>
@@ -100,9 +141,7 @@ export function ToyFilter({ filterBy, onSetFilter }) {
                         </label>
                     </div>
                 </div>
-
             </form>
-
         </section>
     )
 }

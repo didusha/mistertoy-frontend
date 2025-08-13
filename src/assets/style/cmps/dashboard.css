@@ -1,0 +1,12 @@
+.dashboard {
+    text-align: center;
+}
+
+.chart-container {
+    display: flex;
+}
+
+.chart {
+    max-width: 400px;
+    max-height: 400px;
+}

@@ -68,9 +68,7 @@ export function ToyIndex() {
 
     return (
         <div>
-            <h3>Toys App</h3>
-            <main>
-                
+            <main>                
                 {/* <button className='add-btn' onClick={onAddToy}>Add Random Toy ⛐</button> */}
                 <ToyFilter filterBy={filterBy} onSetFilter={onSetFilter} />
                 <Link className='btn' to="/toy/edit">Add Toy</Link>

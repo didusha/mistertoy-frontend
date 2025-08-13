@@ -8,8 +8,8 @@ export function ToyPreview({ toy }) {
             <img src={toy.imgUrl}></img>
             <p>Price: <span>${toy.price.toLocaleString()}</span></p>
             <hr />
-            {/* <Link to={`/toy/edit/${toy._id}`}>Edit</Link> &nbsp; | &nbsp; */}
-           <Link className="btn" title={`Check out toy: ${toy._id}`} to={`/toy/${toy._id}`}>Details</Link>
+            <Link className="btn" to={`/toy/edit/${toy._id}`}>Edit</Link>
+            <Link className="btn" title={`Check out toy: ${toy._id}`} to={`/toy/${toy._id}`}>Details</Link>
 
         </article>
     )
