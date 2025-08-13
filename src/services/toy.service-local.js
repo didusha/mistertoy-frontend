@@ -4,6 +4,7 @@ import { utilService } from './util.service.js'
 import { userService } from './user.service-local.js'
 
 const STORAGE_KEY = 'toyDB'
+const LOCATIONS_KEY = 'locationDB'
 const LABELS = [
     'on wheels',
     'box game',
@@ -25,6 +26,8 @@ export const toyService = {
     // getRandomToy,
     getDefaultFilter,
     getToyLabels,
+    getStoreLocations,
+    setStoreLocations,
 }
 
 function query(filterBy = {}) {
@@ -125,6 +128,15 @@ function _createToys() {
         }
         localStorage.setItem(STORAGE_KEY, JSON.stringify(toys))
     }
+}
+
+function getStoreLocations(){
+    let storeLocations = localStorage.getItem(LOCATIONS_KEY)
+    return storeLocations ? JSON.parse(storeLocations) : []
+}
+
+function setStoreLocations(storeLocations){
+    localStorage.setItem(LOCATIONS_KEY, JSON.stringify(storeLocations))
 }
 
 function getRandomToy() {

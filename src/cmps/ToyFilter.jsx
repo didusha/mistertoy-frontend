@@ -1,5 +1,3 @@
-
-
 import { useEffect, useRef, useState } from "react"
 import { utilService } from "../services/util.service.js"
 import InputLabel from '@mui/material/InputLabel'
@@ -45,7 +43,6 @@ export function ToyFilter({ filterBy, onSetFilter }) {
     }
 
     const { txt, maxPrice, inStock, labels, sortField, sortDir } = filterByToEdit
-    console.log("🚀 ~ ToyFilter ~ filterByToEdit:", filterByToEdit)
 
     return (
         <section className="toy-filter full main-layout">
