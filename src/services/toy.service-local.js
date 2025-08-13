@@ -5,14 +5,14 @@ import { userService } from './user.service-local.js'
 
 const STORAGE_KEY = 'toyDB'
 const LABELS = [
-    'On wheels',
-    'Box game',
-    'Art',
-    'Baby',
-    'Doll',
-    'Puzzle',
-    'Outdoor',
-    'Battery Powered',
+    'on wheels',
+    'box game',
+    'art',
+    'baby',
+    'doll',
+    'puzzle',
+    'outdoor',
+    'battery Powered',
 ]
 _createToys()
 
@@ -42,7 +42,7 @@ function query(filterBy = {}) {
             }
 
             if (filterBy.labels && filterBy.labels.length > 0) {
-                filteredToys = filteredToys.filter(toy => toy.labels.some(label => filterBy.labels.includes(label)))
+                filteredToys = filteredToys.filter(toy => toy.labels.some(label => filterBy.labels.includes(label.toLowerCase())))
             }
 
             if (filterBy.inStock === 'true') {
@@ -95,7 +95,7 @@ function getEmptyToy() {
 }
 
 function getDefaultFilter() {
-    return { txt: '', maxPrice: '', labels: [], inStock: '', sortField: '', sortDir: 1, createdAt: null }
+    return { txt: '', maxPrice: '', labels: [], inStock: 'all', sortField: '', sortDir: 1, createdAt: null }
 }
 
 function getToyLabels() {
@@ -103,8 +103,10 @@ function getToyLabels() {
 }
 
 function _createToys() {
-    let toys = storageService.query(STORAGE_KEY)
+    let toys = localStorage.getItem(STORAGE_KEY)
     if (!toys || !toys.length) {
+        console.log("🚀 ~ _createToys ~ toys:")
+
         const names = ['Speedster Car', 'Coloring Kit', 'Baby Rattle', 'Puzzle Master',
             'Outdoor Explorer', 'Dollhouse Deluxe', 'Battery Bot', 'Box Game Challenge',
             'Artistic Easel', 'Mini Scooter']

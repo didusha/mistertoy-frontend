@@ -21,14 +21,14 @@ export function Dashboard() {
 
     function getToysPrices(labels) {
         return labels.map(label => {
-            const toyLabels = toys.filter(toy => toy.labels?.includes(label))
+            const toyLabels = toys.filter(toy => toy.labels?.includes(label.toLowerCase()))
             const totalPrice = toyLabels.reduce((sum, toy) => sum + toy.price, 0)
             return totalPrice / toyLabels.length
         })
     }
 
     function getToysCountByLabel(labels, toys) {
-        return labels.map(label => toys.filter(toy => toy.labels?.includes(label)).length)
+        return labels.map(label => toys.filter(toy => toy.labels?.includes(label.toLowerCase())).length)
     }
 
     const donutData = {

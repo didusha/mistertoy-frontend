@@ -10,7 +10,6 @@ import Chip from '@mui/material/Chip'
 export function ToyFilter({ filterBy, onSetFilter }) {
 
     const [filterByToEdit, setFilterByToEdit] = useState({ ...filterBy })
-    // console.log("🚀 ~ ToyFilter ~ filterByToEdit:", filterByToEdit)
     const onSetFilterDebounce = useRef(utilService.debounce(onSetFilter, 300)).current
 
     useEffect(() => {
@@ -18,12 +17,9 @@ export function ToyFilter({ filterBy, onSetFilter }) {
     }, [filterByToEdit])
 
     function handleChange({ target }) {
-        console.log("🚀 ~ handleChange ~ target:", target)
         const field = target.name
-        console.log("🚀 ~ handleChange ~ field:", field)
         let value = target.value
-        console.log("🚀 ~ handleChange ~ value:", value)
-
+ 
         switch (target.type) {
             case 'number':
             case 'range':
@@ -34,14 +30,13 @@ export function ToyFilter({ filterBy, onSetFilter }) {
                 value = target.checked ? -1 : 1
                 break
 
-            case 'select-multiple':
-                const selectedValues = []
-                for (let i = 0; i < target.selectedOptions.length; i++) {
-                    selectedValues.push(target.selectedOptions[i].value)
-                }
-                value = selectedValues
-                // console.log(" selectedValues:", selectedValues)
-                break
+            // case 'select-multiple':
+            //     const selectedValues = []
+            //     for (let i = 0; i < target.selectedOptions.length; i++) {
+            //         selectedValues.push(target.selectedOptions[i].value)
+            //     }
+            //     value = selectedValues
+            //     break
 
             default:
                 break
@@ -49,7 +44,8 @@ export function ToyFilter({ filterBy, onSetFilter }) {
         setFilterByToEdit((prevFilter) => ({ ...prevFilter, [field]: value }))
     }
 
-    const { txt, maxPrice, inStock, labels, sortField, sortDir } = filterBy
+    const { txt, maxPrice, inStock, labels, sortField, sortDir } = filterByToEdit
+    console.log("🚀 ~ ToyFilter ~ filterByToEdit:", filterByToEdit)
 
     return (
         <section className="toy-filter full main-layout">
@@ -83,7 +79,7 @@ export function ToyFilter({ filterBy, onSetFilter }) {
 
                     <InputLabel id="inStock">In Stock</InputLabel>
                     <Select id="inStock" name="inStock" value={inStock} onChange={handleChange}>
-                        <MenuItem value="">All</MenuItem>
+                        <MenuItem value="all">All</MenuItem>
                         <MenuItem value="true">In Stock</MenuItem>
                         <MenuItem value="false">Out of Stock</MenuItem>
                     </Select>
