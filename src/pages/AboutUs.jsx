@@ -2,11 +2,9 @@ import { AdvancedMarker, APIProvider, Map, Pin, useAdvancedMarkerRef } from "@vi
 import { toyService } from "../services/toy.service-local.js"
 import { useState } from "react"
 
-
 export function AboutUs() {
-    // const [coords, setCoors] = useState({ lat: 32.0853, lng: 34.7818 })
-    // const [markerRef, marker] = useAdvancedMarkerRef();
-    const DEFAULT_CENTER = { lat: 32.0853, lng: 34.7818 }
+
+    const mapDefaultLoc = { lat: 32.0853, lng: 34.7818 }
     const [markers, setMarkers] = useState(toyService.getStoreLocations())
 
     function onMapClick(ev) {
@@ -19,7 +17,7 @@ export function AboutUs() {
         ev.map.panTo(newPos)
     }
 
-    const mapCenter = markers.length > 0 ? markers[0] : DEFAULT_CENTER
+    const mapCenter = markers.length > 0 ? markers[0] : mapDefaultLoc
 
     return (
         <section>
@@ -37,7 +35,7 @@ export function AboutUs() {
                         defaultCenter={mapCenter}
                         gestureHandling={'greedy'}
                         disableDefaultUI={true}
-                        onClick={onMapClick}
+                        // onClick={onMapClick}
                     >
                         {markers.map((pos, idx) => (
                             <AdvancedMarker

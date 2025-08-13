@@ -17,6 +17,7 @@
 }
 
 .google-map{
-    width: 100%;
+    width: 50%;
     height: 60vh;
+    margin: 0 auto;
 }
