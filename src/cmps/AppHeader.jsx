@@ -6,6 +6,7 @@
 // import { TOGGLE_TOYT_IS_SHOWN } from '../store/reducers/toy.reducer.js'
 // import { useDispatch, useSelector } from 'react-redux'
 import { NavLink } from 'react-router-dom'
+import logo from '../assets/img/mister-toy-logo.png';
 
 // const { useSelector, useDispatch } = ReactRedux
 
@@ -34,7 +35,8 @@ export function AppHeader() {
     return (
         <header className="app-header full main-layout">
             <section className="header-container">
-                <h1>Mister Toy</h1>
+                {/* <h1>Mister Toy</h1> */}
+                <img className="logo" src={logo} alt="logo" />
                 <nav className="app-nav">
                     <NavLink to="/" >Home</NavLink>
                     <NavLink to="/about" >About</NavLink>

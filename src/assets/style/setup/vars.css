@@ -1,5 +1,5 @@
 :root {
-  --clr1: #087f81;
+  /* --clr1: #087f81; */
   /* --clr2: #ae2012; */
 
   --clr1bg: #c3eddf;
@@ -11,11 +11,11 @@
   --gray2: rgb(155, 155, 155);
   --gray3: rgb(44, 44, 44);
 
-    /* --clr1: #E39FBB; */
+    --clr1: #f6f6f6;
   --clr2: #ec4f90;
 
-  /* --clr1bg: #F8DBD9; */
+  /* --clr1bg: #black; */
   /* --clr1bg-light: #c1f1e1; */
-  --clr2bg:  #E39FBB;
+  --clr2bg:  #eac6dd;
   /* --clr2bg-light: #e9d8a6; */
 } 

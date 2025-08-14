@@ -17,7 +17,7 @@ export function ToyFilter({ filterBy, onSetFilter }) {
     function handleChange({ target }) {
         const field = target.name
         let value = target.value
- 
+
         switch (target.type) {
             case 'number':
             case 'range':
@@ -74,7 +74,7 @@ export function ToyFilter({ filterBy, onSetFilter }) {
                         <option value="false">Out of Stock</option>
                     </select> */}
 
-                    <InputLabel id="inStock">In Stock</InputLabel>
+                    <InputLabel className="select-instock" style={{ display: 'contents' }} id="inStock">In Stock</InputLabel>
                     <Select id="inStock" name="inStock" value={inStock} onChange={handleChange}>
                         <MenuItem value="all">All</MenuItem>
                         <MenuItem value="true">In Stock</MenuItem>
@@ -93,11 +93,13 @@ export function ToyFilter({ filterBy, onSetFilter }) {
                         <option value="battery-powered">Battery Powered</option>
                     </select> */}
 
-                    <InputLabel id="labels">Labels</InputLabel>
+                    <InputLabel labelId="labels" style={{ display: 'contents' }}>Labels</InputLabel>
                     <Select
+                        className="select-labels"
                         labelId="labels"
                         id="labels"
                         name="labels"
+                        label
                         multiple
                         value={labels}
                         onChange={handleChange}

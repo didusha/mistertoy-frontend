@@ -1,9 +1,21 @@
 import { storageService } from './async-storage.service.js'
 import { utilService } from './util.service.js'
-import { userService } from './user.service.js'
+// import { userService } from './user.service.js'
 import { httpService } from './http.service.js'
 
 const BASE_URL = 'toy/'
+
+const LOCATIONS_KEY = 'locationDB'
+const LABELS = [
+    'on wheels',
+    'box game',
+    'art',
+    'baby',
+    'doll',
+    'puzzle',
+    'outdoor',
+    'battery Powered',
+]
 
 export const toyService = {
     query,
@@ -12,7 +24,10 @@ export const toyService = {
     remove,
     getEmptyToy,
     getDefaultFilter,
-    getRandomToy
+    getRandomToy,
+    getStoreLocations,
+    setStoreLocations,
+    getToyLabels,
 }
 
 function query(filterBy = {}) {
@@ -52,6 +67,15 @@ function getDefaultFilter() {
 
 function getToyLabels() {
     return [...LABELS]
+}
+
+function getStoreLocations(){
+    let storeLocations = localStorage.getItem(LOCATIONS_KEY)
+    return storeLocations ? JSON.parse(storeLocations) : []
+}
+
+function setStoreLocations(storeLocations){
+    localStorage.setItem(LOCATIONS_KEY, JSON.stringify(storeLocations))
 }
 
 function _createToys() {

@@ -1,4 +1,4 @@
-import { toyService } from "../../services/toy.service-local"
+import { toyService } from "../../services/toy.service"
 
 //* Toys
 export const SET_TOYS = 'SET_TOYS'

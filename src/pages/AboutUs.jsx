@@ -1,5 +1,5 @@
 import { AdvancedMarker, APIProvider, Map, Pin, useAdvancedMarkerRef } from "@vis.gl/react-google-maps"
-import { toyService } from "../services/toy.service-local.js"
+import { toyService } from "../services/toy.service.js"
 import { useState } from "react"
 
 export function AboutUs() {

@@ -2,3 +2,15 @@
     background-color: var(--clr2bg);
     padding: 1em;
 }
+
+.select-labels{
+    display: inline block;
+}
+
+/* .select-instock{
+    display: contents;
+} */
+
+.select-instock {
+    display: contents;
+}
