@@ -71,7 +71,6 @@ export function ToyIndex() {
             <main>                
                 {/* <button className='add-btn' onClick={onAddToy}>Add Random Toy ⛐</button> */}
                 <ToyFilter filterBy={filterBy} onSetFilter={onSetFilter} />
-                <Link className='btn' to="/toy/edit">Add Toy</Link>
                 {!isLoading ?
                     <ToyList toys={toys} onRemoveToy={onRemoveToy} onEditToy={onEditToy} />
                     : <div>Loading...</div>

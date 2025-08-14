@@ -27,6 +27,7 @@ export function AboutUs() {
                 laudantium consequatur neque numquam labore quae.
                 Accusamus libero perferendis ducimus? Alias unde hic
                 quisquam doloremque.</p>
+            <span>Store locations:</span>
             <section className="google-map">
                 <APIProvider apiKey={'AIzaSyBcLlKvJiWUP1ytSSJ3fbYlGiwZrdNGsQM'}>
                     <Map

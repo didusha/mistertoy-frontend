@@ -1,7 +1,7 @@
 export function AppFooter() {
     return (
-        <footer className="">
-            <p>&copy; Coffeerights Adi Bar 2025</p>
+        <footer className="app-footer">
+            <p> Coffeerights Adi Bar 2025</p>
         </footer>
     )
 }

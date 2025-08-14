@@ -33,9 +33,9 @@ export function AppHeader() {
     // }
 
     return (
-        <header className="app-header full main-layout">
+        <header className="app-header">
             <section className="header-container">
-                {/* <h1>Mister Toy</h1> */}
+
                 <img className="logo" src={logo} alt="logo" />
                 <nav className="app-nav">
                     <NavLink to="/" >Home</NavLink>

@@ -1,16 +1,54 @@
 .toy-filter {
-    background-color: var(--clr2bg);
-    padding: 1em;
+    background-color: #eac6dd91;
+    padding: .5em 1rem;
+    position: relative;
 }
 
-.select-labels{
+.select-labels {
     display: inline block;
 }
-
-/* .select-instock{
-    display: contents;
-} */
 
 .select-instock {
     display: contents;
 }
+
+.btn-add-toy {
+    position: absolute;
+    top: 0;
+    right: 0;
+    border: 1px solid white;
+}
+
+.toy-filter form {
+    display: grid;
+    grid-template-columns: 4.375rem 12.5rem 5rem 12.5rem 4.375rem 12.5rem;
+    gap: 1rem;
+    margin: 20px;
+}
+
+.toy-filter h2 {
+    margin-top: 0;
+}
+
+.sort-dir {
+    display: flex;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+}
+
+.toy-filter input,
+.toy-filter select,
+.toy-filter .MuiSelect-select {
+    font-size: 0.8rem;   
+    padding: .2rem 0.3rem;    
+}
+
+.toy-filter .MuiFormControl-root {
+    width: 200px;       
+}
+
+.checkbox{
+    padding: 10px;
+}
+

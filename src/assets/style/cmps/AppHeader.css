@@ -1,7 +1,6 @@
 .app-header {
     background-color: var(--clr1);
-    color: var(--clr1bg);
-    padding-block: 1em;
+    padding-block: .4em;
 }
 
 .app-nav {
@@ -13,8 +12,9 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+    padding-right: .5rem;
 }
 
 .logo{
-    width: 200px;
+    width: 170px;
 }
