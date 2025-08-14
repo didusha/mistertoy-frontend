@@ -24,7 +24,15 @@
 
 .btn-delete-toy {
     position: absolute;
-    top: -15px;
-    right: -15px;
+    top: -7px;
+    right: -10px;
     border-radius: 50%;
+    background-color: transparent;
+    scale: 1;
+}
+
+.btn-delete-toy:hover {
+    background-color: transparent;
+    color: initial;
+    scale: 1.2;
 }

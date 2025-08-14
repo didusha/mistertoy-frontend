@@ -71,22 +71,6 @@ export function ToyFilter({ filterBy, onSetFilter }) {
                     onChange={handleChange}
                 />
 
-                <InputLabel htmlFor="sortField">Sort by:</InputLabel>
-                <Select
-                    className="select-sort-by"
-                    id="sortField"
-                    name="sortField"
-                    value={sortField}
-                    selected={sortField}
-                    onChange={handleChange}
-                    size="small" style={{ width: 200 }}
-                >
-                    <MenuItem value="">Select sort</MenuItem>
-                    <MenuItem value="name">Name</MenuItem>
-                    <MenuItem value="price">Price</MenuItem>
-                    <MenuItem value="createdAt">Created At</MenuItem>
-                </Select>
-
                 <InputLabel className="select-instock" id="inStock">In Stock</InputLabel>
                 <Select id="inStock" name="inStock" value={inStock} onChange={handleChange} size="small" style={{ width: 200 }}>
                     <MenuItem value="all">All</MenuItem>
@@ -116,16 +100,26 @@ export function ToyFilter({ filterBy, onSetFilter }) {
                     <MenuItem value="battery-powered">Battery Powered</MenuItem>
                 </Select>
 
-                <InputLabel htmlFor="inStock">In Stock:</InputLabel>
-                <Select size="small" style={{ width: 200 }} id="inStock" name="inStock" value={inStock === undefined ? '' : inStock} onChange={handleChange}>
-                    <option value="">All</option>
-                    <option value="true">In Stock</option>
+                 <InputLabel htmlFor="sortField">Sort by:</InputLabel>
+                <Select
+                    className="select-sort-by"
+                    id="sortField"
+                    name="sortField"
+                    value={sortField}
+                    selected={sortField}
+                    onChange={handleChange}
+                    size="small" style={{ width: 200 }}
+                >
+                    <MenuItem value="">Select sort</MenuItem>
+                    <MenuItem value="name">Name</MenuItem>
+                    <MenuItem value="price">Price</MenuItem>
+                    <MenuItem value="createdAt">Created At</MenuItem>
                 </Select>
 
 
                 <div className="sort-dir">
-                    <InputLabel><span>⬇</span></InputLabel>
-                    <input className="checkbox" type="checkbox" name="sortDir" checked={sortDir < -0} onChange={handleChange} />
+                <InputLabel><span>Sort direction:</span></InputLabel>
+                <input className="checkbox" type="checkbox" name="sortDir" checked={sortDir < -0} onChange={handleChange} />
                 </div>
 
             </form>
@@ -151,3 +145,9 @@ export function ToyFilter({ filterBy, onSetFilter }) {
 //                     <option value="battery-powered">Battery Powered</option>
 //                 </select>
 
+
+{/* <InputLabel htmlFor="inStock">In Stock:</InputLabel>
+                <Select size="small" style={{ width: 200 }} id="inStock" name="inStock" value={inStock === undefined ? '' : inStock} onChange={handleChange}>
+                    <option value="">All</option>
+                    <option value="true">In Stock</option>
+                </Select> */}
