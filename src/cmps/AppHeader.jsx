@@ -10,11 +10,13 @@ import logo from '../assets/img/mister-toy-logo.png';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBars, faXmark } from '@fortawesome/free-solid-svg-icons';
 import { useState } from 'react';
+import { useTranslation } from 'react-i18next';
 
 // const { useSelector, useDispatch } = ReactRedux
 
 export function AppHeader() {
     const [isOpen, setIsOpen] = useState(false)
+     const { t, i18n } = useTranslation();
     // const dispatch = useDispatch()
     // const user = useSelector(storeState => storeState.userModule.loggedInUser)
     // console.log('user:', user)
@@ -52,10 +54,10 @@ export function AppHeader() {
                 )}
 
                 <nav className={`app-nav ${isOpen ? 'open' : ''}`}>
-                    <NavLink to="/" >Home</NavLink>
-                    <NavLink to="/about" >About</NavLink>
-                    <NavLink to="/toy" >Products</NavLink>
-                    <NavLink to="/dashboard" >Dashboard</NavLink>
+                    <NavLink to="/" >{t('home')}</NavLink>
+                    <NavLink to="/about" >{t('about')}</NavLink>
+                    <NavLink to="/toy" >{t('products')}</NavLink>
+                    <NavLink to="/dashboard" >{t('dashboard')}</NavLink>
                     {/* <a onClick={onToggleCart} href="#">🛒 Cart</a> */}
 
                 </nav>

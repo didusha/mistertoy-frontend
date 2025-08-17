@@ -36,8 +36,8 @@ export function ToyDetails() {
 
     return (
         <section className="toy-details">
-            <div className="detail-container flex">
-                <div>
+            <div className="details-container">
+                {/* <div> */}
                 <h1>Toy Name : {toy.name}</h1>
                 <h5>Price: ${toy.price}</h5>
                 {!!toy.labels?.length && (
@@ -51,16 +51,16 @@ export function ToyDetails() {
                     Nemo quidem, placeat perferendis tempora aspernatur sit,
                     explicabo veritatis corrupti perspiciatis repellat, enim
                     quibusdam!</p>
-                    </div>
-                <div>
+                {/* </div>
+                <div> */}
                 <img src={toy.imgUrl} alt="" />
-                </div>
+                {/* </div> */}
             </div>
-            <Link className="btn" to={`/toy/edit/${toy._id}`}>Edit</Link> &nbsp;
-            <Link className="btn" to={`/toy`}>Back</Link>
-            {/* <p>
-                <Link className="btn" to="/toy/nJ5L4">Next Toy</Link>
-            </p> */}
+            <div>
+                <Link className="btn" to={`/toy/edit/${toy._id}`}>Edit</Link> &nbsp;
+                <Link className="btn" to={`/toy`}>Back</Link>
+                {/* <Link className="btn" to="/toy/nJ5L4">Next Toy</Link> */}
+            </div>
             <button className="chat-icon-btn" onClick={openChat}>💬</button>
             <Popup isOpen={isChatOpen}
                 onClose={closeChat}

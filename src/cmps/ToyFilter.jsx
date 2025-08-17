@@ -117,11 +117,8 @@ export function ToyFilter({ filterBy, onSetFilter }) {
                     <MenuItem value="createdAt">Created At</MenuItem>
                 </Select>
 
-
-                <div className="sort-dir">
-                <InputLabel><span>Sort direction</span></InputLabel>
-                <input className="checkbox" type="checkbox" name="sortDir" checked={sortDir < -0} onChange={handleChange} />
-                </div>
+                <InputLabel><span>Decending</span></InputLabel>
+                <input className="checkbox" type="checkbox" name="sortDir" disabled={filterByToEdit?.sortField === ''} checked={sortDir < -0} onChange={handleChange} />
 
             </form>
             <Link className='btn btn-add-toy' to="/toy/edit">Add Toy</Link>

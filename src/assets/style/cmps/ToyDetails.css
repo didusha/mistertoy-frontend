@@ -1,7 +1,23 @@
-.details-container{
-    display: flex;
-}
+.toy-details {
+    width: 90%;
+    margin: 0 auto;
 
-.details-container img{
-    max-width: 37rem;
+    .details-container {
+        display: grid;
+        grid-template-columns: 1fr 200px;
+
+        img {
+            grid-column: 2;
+            grid-row: 1 / span 5;
+        }
+    }
+
+    .chat-icon-btn {
+        position: absolute;
+        bottom: 2.6rem;
+        right: -.5rem;
+        background: #ee1eaf;
+        padding: 0;
+        font-size: 1.5rem;
+    }
 }

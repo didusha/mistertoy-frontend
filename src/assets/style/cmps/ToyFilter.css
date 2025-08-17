@@ -1,5 +1,4 @@
 .toy-filter {
-    /* background-color: #eac6dd91; */
     padding: .5em 1rem;
     position: relative;
 }
@@ -35,6 +34,7 @@
 }
 
 .checkbox {
-    width: 1rem;
-    height: 1rem;
+    width: 1.2rem;
+    height: 1.2rem;
+    margin: 0;
 }

@@ -2,29 +2,29 @@
     display: grid;
     gap: 1rem;
     padding-inline: 1rem;
-}
 
-.toy-list li {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-    background-color: var(--clr1);
-    padding: 0.65em;
-    position: relative;
-    border-radius: 10px;
-}
+    li {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        background-color: var(--clr1);
+        padding: 0.65em;
+        position: relative;
+        border-radius: 10px;
 
-.btn-delete-toy {
-    position: absolute;
-    top: -7px;
-    right: -10px;
-    border-radius: 50%;
-    background-color: transparent;
-    scale: 1;
-}
+        .btn-delete-toy {
+            position: absolute;
+            top: -7px;
+            right: -10px;
+            border-radius: 50%;
+            background-color: transparent;
+            scale: 1;
 
-.btn-delete-toy:hover {
-    background-color: transparent;
-    color: initial;
-    scale: 1.2;
+            &:hover {
+                background-color: transparent;
+                color: initial;
+                scale: 1.2;
+            }
+        }
+    }
 }

@@ -3,12 +3,21 @@
     padding: 0.3em;
     display: flex;
     flex-direction: column;
-}
-.toy-preview h4{
-    text-transform: capitalize;
-    color: black;
+
+    h4 {
+        text-transform: capitalize;
+        color: black;
+
+        img {
+            max-width: 170px;
+        }
+    }
 }
 
-.toy-preview img {
-    max-width: 170px;
+.red {
+    color: rgb(236, 27, 27);
+}
+
+.green {
+    color: rgb(5, 190, 5);
 }

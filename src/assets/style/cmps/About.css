@@ -1,15 +1,23 @@
-.about{
+.about {
     margin-inline: 1rem;
     text-align: justify;
-}
 
-.about h2{
-    text-align: center;
-}
+    h2 {
+        text-align: center;
+    }
 
-.google-map{
-    width: 50%;
-    height: 50vh;
-    margin: 0 auto;
-    margin-bottom: 1rem;
+    .google-map {
+        margin: 0 auto;
+        margin-bottom: 1rem;
+        position: relative;
+    }
+
+    .branch-buttons {
+        text-align: center;
+        display: flex;
+        position: absolute;
+        left: 0;
+        top: 0;
+    }
+
 }

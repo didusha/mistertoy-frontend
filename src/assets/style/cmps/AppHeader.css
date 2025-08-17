@@ -1,21 +1,21 @@
 .app-header {
     background-color: var(--clr1);
     padding-block: .4em;
-}
 
-.app-nav {
-    display: flex;
-    text-transform: uppercase;
-    transition: all 0.3s ease;
-}
+    .header-container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding-right: .5rem;
 
-.header-container {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding-right: .5rem;
-}
+        .logo {
+            width: 170px;
+        }
 
-.logo {
-    width: 170px;
+        .app-nav {
+            display: flex;
+            text-transform: uppercase;
+            transition: all 0.3s ease;
+        }
+    }
 }
