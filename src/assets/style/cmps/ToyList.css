@@ -1,15 +1,7 @@
 .toy-list {
-    list-style: none;
-    display: flex;
-    flex-wrap: wrap;
-    padding-left: 0;
-    gap: 1.5rem;
-    margin-block: 0.6em;
-}
-
-.toy-list ul {
-    display: flex;
-    justify-content: center;
+    display: grid;
+    gap: 1rem;
+    padding-inline: 1rem;
 }
 
 .toy-list li {

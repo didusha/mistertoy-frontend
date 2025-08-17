@@ -1,0 +1,132 @@
+/* Mobile */
+@media (max-width: 550px) {
+
+  .app-nav {
+    position: absolute;
+    right: 0;
+    top: 50px;
+
+    flex-direction: column;
+    gap: 15px;
+
+    padding: 1.5rem;
+    font-size: .9rem;
+    text-align: right;
+    background-color: var(--clr1);
+    border-radius: 10px;
+    opacity: 0;
+    transform: translateY(-10px);
+    pointer-events: none;
+  }
+
+  .app-nav.open {
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
+  }
+
+  .toy-list {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .toy-filter form {
+    display: grid;
+    grid-template-columns: 6rem 12rem;
+    gap: .5rem;
+  }
+
+  .toy-filter label {
+    display: inline-block;
+  }
+
+  .sort-dir {
+    grid-column: 1/ -1;
+    display: flex;
+    align-items: center;
+  }
+
+  .checkbox{
+    margin-left: 7px;
+  }
+
+  .chart-container {
+    flex-direction: column;
+    align-items: center;
+  }
+
+}
+
+/* Small */
+@media (min-width: 550px) {
+
+  .app-nav {
+    gap: 10px;
+    font-size: .9rem;
+  }
+
+  .btn-nav-toggle{
+    display: none;
+  }
+
+  .toy-list {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .toy-filter form {
+    display: grid;
+    grid-template-columns: 4rem 11rem 5rem 11rem;
+    gap: 1rem;
+  }
+
+  .sort-dir {
+    grid-column: 3 / span 2;
+    display: flex;
+    align-items: center;
+  }
+
+  .chart-container {
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+/* Medium */
+@media (min-width: 750px) {
+
+  .app-nav {
+    font-size: 1rem;
+  }
+
+  .toy-list {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  .chart-container {
+    flex-direction: row;
+    justify-content: center;
+  }
+}
+
+/* Large */
+@media (min-width: 900px) {
+  .toy-list {
+    grid-template-columns: repeat(5, 1fr);
+  }
+
+  .toy-filter form {
+    grid-template-columns: 4rem 12.5rem 5rem 12.5rem 4rem 12.5rem;
+  }
+
+  .sort-dir {
+    grid-column: 5 / span 2;
+    display: flex;
+    align-items: center;
+  }
+}
+
+/* Extra large */
+@media (min-width: 1200px) {
+  .toy-list {
+    grid-template-columns: repeat(6, 1fr);
+  }
+}

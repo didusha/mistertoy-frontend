@@ -6,21 +6,30 @@ export function AboutUs() {
 
     const mapDefaultLoc = { lat: 32.0853, lng: 34.7818 }
     const [markers, setMarkers] = useState(toyService.getStoreLocations())
+    // const [coords, setCoords] = useState(mapDefaultLoc)
+
+    // function onMapClick(ev) {
+    //     console.log("🚀 ~ onMapClick ~ ev:", ev)
+    //     // setCoors(ev.detail.latLng)
+    //     // ev.map.panTo(ev.detail.latLng)
+    //     const newPos = ev.detail.latLng
+    //     const updatedMarkers = [...markers, newPos]
+    //     setMarkers(updatedMarkers)
+    //     toyService.setStoreLocations(updatedMarkers) 
+    //     ev.map.panTo(newPos)
+    // }
 
     function onMapClick(ev) {
-        // setCoors(ev.detail.latLng)
-        // ev.map.panTo(ev.detail.latLng)
-        const newPos = ev.detail.latLng
-        const updatedMarkers = [...markers, newPos]
-        setMarkers(updatedMarkers)
-        toyService.setStoreLocations(updatedMarkers) 
-        ev.map.panTo(newPos)
+        // setCoords(ev.detail.latLng)
+        ev.map.panTo(ev.detail.latLng)
+        ev.map.setZoom(11)
     }
 
     const mapCenter = markers.length > 0 ? markers[0] : mapDefaultLoc
+    // console.log("🚀 ~ AboutUs ~ markers:", markers)
 
     return (
-        <section>
+        <section className="about">
             <h2>About Us</h2>
             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.
                 Magni aperiam quo veniam velit dolor reprehenderit,
@@ -36,7 +45,7 @@ export function AboutUs() {
                         defaultCenter={mapCenter}
                         gestureHandling={'greedy'}
                         disableDefaultUI={true}
-                        // onClick={onMapClick}
+                        onClick={onMapClick}
                     >
                         {markers.map((pos, idx) => (
                             <AdvancedMarker

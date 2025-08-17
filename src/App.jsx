@@ -19,10 +19,10 @@ export default function App() {
       <Router>
         <section className="app">
           <AppHeader />
-          <main className='main-layout'>
+          <main>
             <Routes>
               <Route element={<HomePage />} path="/" />
-              <Route element={<AboutUs />} path="/about" />
+              <Route element={<AboutUs/>} path="/about" />
               <Route element={<ToyIndex />} path="/toy" />
               <Route element={<ToyEdit />} path="/toy/edit" />
               <Route element={<ToyEdit />} path="/toy/edit/:toyId" />

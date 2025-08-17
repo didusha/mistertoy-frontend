@@ -7,10 +7,14 @@
 // import { useDispatch, useSelector } from 'react-redux'
 import { NavLink } from 'react-router-dom'
 import logo from '../assets/img/mister-toy-logo.png';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faBars, faXmark } from '@fortawesome/free-solid-svg-icons';
+import { useState } from 'react';
 
 // const { useSelector, useDispatch } = ReactRedux
 
 export function AppHeader() {
+    const [isOpen, setIsOpen] = useState(false)
     // const dispatch = useDispatch()
     // const user = useSelector(storeState => storeState.userModule.loggedInUser)
     // console.log('user:', user)
@@ -29,22 +33,33 @@ export function AppHeader() {
 
     // function onToggleToyt(ev) {
     //     ev.preventDefault()
-    //     dispatch({ type: TOGGLE_TOYT_IS_SHOWN })
+    //     dispatch({ type: TOGGLE_CART_IS_SHOWN })
     // }
+
+    function onToggleNavBar() {
+        setIsOpen(!isOpen)
+    }
 
     return (
         <header className="app-header">
             <section className="header-container">
-
                 <img className="logo" src={logo} alt="logo" />
-                <nav className="app-nav">
+
+                {!isOpen ? (
+                    <FontAwesomeIcon className="btn-nav-toggle" icon={faBars} onClick={onToggleNavBar} />
+                ) : (
+                    <FontAwesomeIcon className="btn-nav-toggle" icon={faXmark} onClick={onToggleNavBar} />
+                )}
+
+                <nav className={`app-nav ${isOpen ? 'open' : ''}`}>
                     <NavLink to="/" >Home</NavLink>
                     <NavLink to="/about" >About</NavLink>
                     <NavLink to="/toy" >Products</NavLink>
                     <NavLink to="/dashboard" >Dashboard</NavLink>
-                    {/* <a onClick={onToggleToyt} href="#">🛒 Toyt</a> */}
+                    {/* <a onClick={onToggleCart} href="#">🛒 Cart</a> */}
 
                 </nav>
+
             </section>
             {/* {user ? (
                 < section >

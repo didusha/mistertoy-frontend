@@ -47,11 +47,11 @@ export function ToyFilter({ filterBy, onSetFilter }) {
     const { txt, maxPrice, inStock, labels, sortField, sortDir } = filterByToEdit
 
     return (
-        <section className="toy-filter full main-layout">
+        <section className="toy-filter">
             <h2>Toys Filter</h2>
             <form >
 
-                <InputLabel htmlFor="name">Name:</InputLabel>
+                <InputLabel htmlFor="name">Name</InputLabel>
                 <TextField
                     type="text"
                     id="name"
@@ -61,7 +61,7 @@ export function ToyFilter({ filterBy, onSetFilter }) {
                     onChange={handleChange}
                 />
 
-                <InputLabel htmlFor="maxPrice">Max price:</InputLabel>
+                <InputLabel htmlFor="maxPrice">Max price</InputLabel>
                 <TextField
                     type="number"
                     id="maxPrice"
@@ -72,7 +72,7 @@ export function ToyFilter({ filterBy, onSetFilter }) {
                 />
 
                 <InputLabel className="select-instock" id="inStock">In Stock</InputLabel>
-                <Select id="inStock" name="inStock" value={inStock} onChange={handleChange} size="small" style={{ width: 200 }}>
+                <Select id="inStock" name="inStock" value={inStock} onChange={handleChange} size="small" style={{ width: 170 }}>
                     <MenuItem value="all">All</MenuItem>
                     <MenuItem value="true">In Stock</MenuItem>
                     <MenuItem value="false">Out of Stock</MenuItem>
@@ -88,7 +88,7 @@ export function ToyFilter({ filterBy, onSetFilter }) {
                     multiple
                     value={labels}
                     onChange={handleChange}
-                    size="small" style={{ width: 200 }}
+                    size="small" style={{ width: 170 }}
                 >
                     <MenuItem value="art">Art</MenuItem>
                     <MenuItem value="puzzle">Puzzle</MenuItem>
@@ -100,7 +100,7 @@ export function ToyFilter({ filterBy, onSetFilter }) {
                     <MenuItem value="battery-powered">Battery Powered</MenuItem>
                 </Select>
 
-                 <InputLabel htmlFor="sortField">Sort by:</InputLabel>
+                 <InputLabel htmlFor="sortField">Sort by</InputLabel>
                 <Select
                     className="select-sort-by"
                     id="sortField"
@@ -108,7 +108,8 @@ export function ToyFilter({ filterBy, onSetFilter }) {
                     value={sortField}
                     selected={sortField}
                     onChange={handleChange}
-                    size="small" style={{ width: 200 }}
+                    size="small" 
+                    style={{ width: 170 }}
                 >
                     <MenuItem value="">Select sort</MenuItem>
                     <MenuItem value="name">Name</MenuItem>
@@ -118,7 +119,7 @@ export function ToyFilter({ filterBy, onSetFilter }) {
 
 
                 <div className="sort-dir">
-                <InputLabel><span>Sort direction:</span></InputLabel>
+                <InputLabel><span>Sort direction</span></InputLabel>
                 <input className="checkbox" type="checkbox" name="sortDir" checked={sortDir < -0} onChange={handleChange} />
                 </div>
 
@@ -147,7 +148,7 @@ export function ToyFilter({ filterBy, onSetFilter }) {
 
 
 {/* <InputLabel htmlFor="inStock">In Stock:</InputLabel>
-                <Select size="small" style={{ width: 200 }} id="inStock" name="inStock" value={inStock === undefined ? '' : inStock} onChange={handleChange}>
+                <Select size="small" style={{ width: 170 }} id="inStock" name="inStock" value={inStock === undefined ? '' : inStock} onChange={handleChange}>
                     <option value="">All</option>
                     <option value="true">In Stock</option>
                 </Select> */}

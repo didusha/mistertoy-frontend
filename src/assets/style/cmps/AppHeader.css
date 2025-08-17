@@ -5,7 +5,8 @@
 
 .app-nav {
     display: flex;
-    gap: 15px;
+    text-transform: uppercase;
+    transition: all 0.3s ease;
 }
 
 .header-container {
@@ -15,6 +16,6 @@
     padding-right: .5rem;
 }
 
-.logo{
+.logo {
     width: 170px;
 }
