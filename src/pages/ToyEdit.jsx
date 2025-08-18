@@ -22,7 +22,6 @@ import {
 export function ToyEdit() {
     const navigate = useNavigate()
     const [toyToEdit, setToyToEdit] = useState(toyService.getEmptyToy())
-    console.log("🚀 ~ ToyEdit ~ toyToEdit:", toyToEdit)
     const { toyId } = useParams()
 
     const isOnline = useOnlineStatus()
@@ -50,7 +49,6 @@ export function ToyEdit() {
     }
 
     function onSaveToy(toyToEdit, { resetForm }) {
-    // console.log("🚀 ~ onSaveToy ~ toyToEdit:", toyToEdit)
         saveToy(toyToEdit)
             .then(() => {
                 showSuccessMsg('Toy Saved!')

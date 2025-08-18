@@ -40,7 +40,7 @@ export function ToyIndex() {
     }
 
     function onAddToy() {
-           const toy = {
+        const toy = {
             name: prompt('toy name?'),
             price: +prompt('Toy price?'),
         }
@@ -68,7 +68,7 @@ export function ToyIndex() {
 
     return (
         <div>
-            <main>                
+            <main>
                 {/* <button className='add-btn' onClick={onAddToy}>Add Random Toy ⛐</button> */}
                 <ToyFilter filterBy={filterBy} onSetFilter={onSetFilter} />
                 {!isLoading ?

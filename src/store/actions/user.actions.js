@@ -1,10 +1,10 @@
-import { userService } from "../../services/user.service-local.js"
+import { userService } from "../../services/user.service.js"
 // import { CLEAR_TOYT } from "../reducers/toy.reducer.js"
 import { SET_USER, SET_USER_SCORE } from "../reducers/user.reducer.js"
 import { store } from "../store.js"
 
 export function login(credentials) {
-    console.log('credentials:', credentials)
+    // console.log('credentials:', credentials)
     return userService.login(credentials)
         .then((user) => {
             console.log('user login:', user)

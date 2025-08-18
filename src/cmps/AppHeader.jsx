@@ -1,10 +1,10 @@
 // import { UserMsg } from './UserMsg.jsx'
-// import { LoginSignup } from './LoginSignup.jsx'
-// import { userService } from '../services/user.service.js'
-// import { showErrorMsg, showSuccessMsg } from '../services/event-bus.service.js'
-// import { logout } from '../store/actions/user.actions.js'
+import { LoginSignup } from './LoginSignup.jsx'
+import { userService } from '../services/user.service.js'
+import { showErrorMsg, showSuccessMsg } from '../services/event-bus.service.js'
+import { logout } from '../store/actions/user.actions.js'
 // import { TOGGLE_TOYT_IS_SHOWN } from '../store/reducers/toy.reducer.js'
-// import { useDispatch, useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { NavLink } from 'react-router-dom'
 import logo from '../assets/img/mister-toy-logo.png';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -16,20 +16,20 @@ import { useTranslation } from 'react-i18next';
 
 export function AppHeader() {
     const [isOpen, setIsOpen] = useState(false)
-     const { t, i18n } = useTranslation();
-    // const dispatch = useDispatch()
-    // const user = useSelector(storeState => storeState.userModule.loggedInUser)
+    const { t, i18n } = useTranslation();
+    const dispatch = useDispatch()
+    const user = useSelector(storeState => storeState.userModule.loggedInUser)
     // console.log('user:', user)
 
-    // function onLogout() {
-    //     logout()
-    //         .then(() => {
-    //             showSuccessMsg('logout successfully')
-    //         })
-    //         .catch((err) => {
-    //             showErrorMsg('OOPs try again')
-    //         })
-    // }
+    function onLogout() {
+        logout()
+            .then(() => {
+                showSuccessMsg('logout successfully')
+            })
+            .catch((err) => {
+                showErrorMsg('OOPs try again')
+            })
+    }
 
 
 
@@ -62,18 +62,20 @@ export function AppHeader() {
 
                 </nav>
 
+                {user ? (
+                    < section >
+                        <span to={`/user/${user._id}`}>Hello {user.fullname.split(' ')[0]} <span>${user.score.toLocaleString()}</span></span>
+                        <button onClick={onLogout}>Logout</button>
+                    </ section >
+                ) : (
+                    <section>
+                        <LoginSignup />
+                    </section>
+                )}
+
             </section>
-            {/* {user ? (
-                < section >
-                    <span to={`/user/${user._id}`}>Hello {user.fullname} <span>${user.score.toLocaleString()}</span></span>
-                    <button onClick={onLogout}>Logout</button>
-                </ section >
-            ) : (
-                <section>
-                    <LoginSignup />
-                </section>
-            )}
-            <UserMsg /> */}
+
+            {/* <UserMsg /> */}
         </header>
     )
 }

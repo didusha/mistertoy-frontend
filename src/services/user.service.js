@@ -1,7 +1,10 @@
 import { storageService } from './async-storage.service.js'
+import { httpService } from './http.service.js'
 
-const STORAGE_KEY = 'userDB'
+// const STORAGE_KEY = 'userDB'
 const STORAGE_KEY_LOGGEDIN = 'loggedinUser'
+
+const BASE_URL = 'auth/'
 
 export const userService = {
     login,
@@ -14,29 +17,23 @@ export const userService = {
 }
 
 
-function getById(userId) {
-    return storageService.get(STORAGE_KEY, userId)
+async function getById(userId) {
+    return await httpService.get(BASE_URL + userId)
 }
 
-function login({ username, password }) {
-    return storageService.query(STORAGE_KEY)
-        .then(users => {
-            const user = users.find(user => user.username === username)
-            // if (user && user.password !== password) return _setLoggedinUser(user)
-            if (user) return _setLoggedinUser(user)
-            else return Promise.reject('Invalid login')
-        })
+async function login({ username, password }) {
+    const user = await httpService.post(BASE_URL + 'login', { username, password })
+    return _setLoggedinUser(user)
 }
 
-function signup({ username, password, fullname }) {
-    const user = { username, password, fullname, score: 10000 }
-    return storageService.post(STORAGE_KEY, user)
-        .then(_setLoggedinUser)
+async function signup({ username, password, fullname }) {
+    const user = await httpService.post(BASE_URL + 'signup', { username, password, fullname })
+    return _setLoggedinUser(user)
 }
 
-function logout() {
+async function logout() {
+    await httpService.post(BASE_URL + 'logout')
     sessionStorage.removeItem(STORAGE_KEY_LOGGEDIN)
-    return Promise.resolve()
 }
 
 function getLoggedinUser() {
