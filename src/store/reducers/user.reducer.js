@@ -1,14 +1,15 @@
-// import { userService } from "../../services/user.service.js"
+import { userService } from "../../services/user.service.js"
 
 //* User
 export const SET_USER = 'SET_USER'
-export const SET_USER_SCORE = 'SET_USER_SCORE'
+export const SET_SCORE = 'SET_SCORE'
+export const SET_USERS = 'SET_USERS'
 
 
 const initialState = {
     // count: 105,
-    loggedInUser: null 
-    // userService.getLoggedinUser()
+    loggedInUser: userService.getLoggedinUser(),
+    user:null,
 }
 
 export function userReducer(state = initialState, action = {}) {
@@ -21,10 +22,17 @@ export function userReducer(state = initialState, action = {}) {
                 loggedInUser: action.user
             }
 
-        // case SET_USER_SCORE:
-        //     const loggedInUser = { ...state.loggedInUser, score: action.score }
-        //     return { ...state, loggedInUser }
-        
+        case SET_USERS:
+            newState = { ...state, users: action.users }
+            break
+
+        case SET_SCORE:
+            const user = { ...state.user, score: action.score }
+            newState = { ...state, user }
+            userService.saveLoggedinUser(user)
+            break
+
+
         default:
             return state;
     }

@@ -1,39 +1,55 @@
-import { useState } from "react"
+import { useEffect, useRef, useState } from "react"
 
-export function Chat() {
+export function Chat({ msgs, user, onSend }) {
 
-    const [msgs, setMsgs] = useState([])
-    const [msgToSend, setMsgToSend] = useState('')
+    const [msgToSend, setMsgToSend] = useState({ txt: '' })
+    const chatEndRef = useRef(null)
+
+    useEffect(() => {
+        scrollToBottom()
+    }, [msgs])
+
+    function scrollToBottom() {
+        chatEndRef.current?.scrollIntoView({ behavior: 'smooth' })
+    }
+
+    function handleMsgChange(ev) {
+        const { name: field, value } = ev.target
+        setMsgToSend(msg => ({ ...msg, [field]: value }))
+    }
 
     function sendMsg(ev) {
         ev.preventDefault()
-        if (!msgToSend.trim()) return
 
-        const userMsg = { text: msgToSend, sender: 'user' }
-        setMsgs(prevMsgs => [...prevMsgs, userMsg])
-        setMsgToSend('')
-
-        setTimeout(() => {
-            const botMsg = { text: `You said: "${msgToSend}"`, sender: 'bot' }
-            setMsgs(prevMsgs => [...prevMsgs, botMsg])
-        }, 1000)
+        const trimmed = msgToSend.txt.trim()
+        if (!trimmed) return
+        onSend(msgToSend)
+        setMsgToSend({ txt: '' })
     }
 
     return (
-           <section className="chat-container">
+        <section className="chat-container">
             <div className="chat-msgs">
-                {msgs.map((msg, idx) => (
-                    <div key={idx} className={`chat-msg ${msg.sender}`}>
-                        {msg.text}
-                    </div>
-                ))}
+                {msgs?.map(msg => {
+                    const isUser = msg.by._id === user._id
+                    const position = isUser ? 'user' : 'other'
+
+                    return (
+                        <div key={msg.id} className={`chat-msg ${position}`}>
+                            <strong>{msg.by.fullname === user.fullname ? 'Me' : msg.by.fullname}: </strong>
+                            {msg.txt}
+                        </div>
+                    )
+                })}
+                <div ref={chatEndRef} />
             </div>
             <div className="chat-input">
                 <form className="chat-form" onSubmit={sendMsg}>
                     <input
                         type="text"
-                        value={msgToSend}
-                        onChange={ev => setMsgToSend(ev.target.value)}
+                        name="txt"
+                        value={msgToSend.txt}
+                        onChange={handleMsgChange}
                         placeholder="Type a message..."
                         autoComplete="off"
                     />

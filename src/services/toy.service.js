@@ -28,6 +28,7 @@ export const toyService = {
     getStoreLocations,
     setStoreLocations,
     getToyLabels,
+    addToyMsg,
 }
 
 function query(filterBy = {}) {
@@ -55,7 +56,7 @@ function getEmptyToy() {
         name: '',
         price: '',
         inStock: false,
-        imgUrl: `https://robohash.org/${utilService.getRandomIntInclusive(1, 10)}?set=set3`,
+        imgUrl: `https://robohash.org/${utilService.getRandomIntInclusive(1, 10)}?set=set5`,
         labels: [],
         createdAt: null,
     }
@@ -78,28 +79,32 @@ function setStoreLocations(storeLocations){
     localStorage.setItem(LOCATIONS_KEY, JSON.stringify(storeLocations))
 }
 
-function _createToys() {
-    let toys = storageService.query(STORAGE_KEY)
-    if (!toys || !toys.length) {
-        const names = ['Speedster Car', 'Coloring Kit', 'Baby Rattle', 'Puzzle Master',
-            'Outdoor Explorer', 'Dollhouse Deluxe', 'Battery Bot', 'Box Game Challenge',
-            'Artistic Easel', 'Mini Scooter']
-        const toys = []
-        for (let i = 0; i < 10; i++) {
-            const toy = {
-                _id: utilService.makeId(),
-                name: names[utilService.getRandomIntInclusive(0, names.length - 1)],
-                inStock: Math.random() < 0.5 ? true : false,
-                labels: [LABELS[utilService.getRandomIntInclusive(0, LABELS.length - 1)]],
-                imgUrl: `https://robohash.org/${i + 1}?set=set3`,
-                price: utilService.getRandomIntInclusive(30, 250),
-                createdAt: Date.now()
-            }
-            toys.push(toy)
-        }
-        localStorage.setItem(STORAGE_KEY, JSON.stringify(toys))
-    }
+async function addToyMsg(toyId, msg) {
+    return httpService.post(BASE_URL + toyId + '/msg', msg )
 }
+
+// function _createToys() {
+//     let toys = storageService.query(STORAGE_KEY)
+//     if (!toys || !toys.length) {
+//         const names = ['Speedster Car', 'Coloring Kit', 'Baby Rattle', 'Puzzle Master',
+//             'Outdoor Explorer', 'Dollhouse Deluxe', 'Battery Bot', 'Box Game Challenge',
+//             'Artistic Easel', 'Mini Scooter']
+//         const toys = []
+//         for (let i = 0; i < 10; i++) {
+//             const toy = {
+//                 _id: utilService.makeId(),
+//                 name: names[utilService.getRandomIntInclusive(0, names.length - 1)],
+//                 inStock: Math.random() < 0.5 ? true : false,
+//                 labels: [LABELS[utilService.getRandomIntInclusive(0, LABELS.length - 1)]],
+//                 imgUrl: `https://robohash.org/${i + 1}?set=set3`,
+//                 price: utilService.getRandomIntInclusive(30, 250),
+//                 createdAt: Date.now()
+//             }
+//             toys.push(toy)
+//         }
+//         localStorage.setItem(STORAGE_KEY, JSON.stringify(toys))
+//     }
+// }
 
 function getRandomToy() {
     return {

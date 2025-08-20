@@ -14,8 +14,6 @@ export function ToyIndex() {
     const toys = useSelector(storeState => storeState.toyModule.toys)
     const filterBy = useSelector(storeState => storeState.toyModule.filterBy)
     const isLoading = useSelector(storeState => storeState.toyModule.isLoading)
-    // console.log("🚀 ~ ToyIndex ~ filterBy:", filterBy)
-
 
     useEffect(() => {
         loadToys()
@@ -29,55 +27,28 @@ export function ToyIndex() {
     }
 
 
-    function onRemoveToy(toyId) {
-        removeToy(toyId)
-            .then(() => {
-                showSuccessMsg('Toy removed')
-            })
-            .catch(err => {
-                showErrorMsg('Cannot remove toy')
-            })
-    }
-
-    function onAddToy() {
-        const toy = {
-            name: prompt('toy name?'),
-            price: +prompt('Toy price?'),
+    async function onRemoveToy(toyId) {
+        try {
+            await removeToy(toyId)
+            showSuccessMsg('Toy removed')
         }
-        saveToy(toy)
-            .then((savedToy) => {
-                showSuccessMsg(`Toy added (id: ${savedToy._id})`)
-            })
-            .catch(err => {
-                showErrorMsg('Cannot add toy')
-            })
+        catch(err){
+                showErrorMsg('Cannot remove toy')
+            }
+        }
+
+        return (
+            <div>
+                <main>
+                    {/* <button className='add-btn' onClick={onAddToy}>Add Random Toy ⛐</button> */}
+                    <ToyFilter filterBy={filterBy} onSetFilter={onSetFilter} />
+                    {!isLoading ?
+                        <ToyList toys={toys} onRemoveToy={onRemoveToy} />
+                        : <div>Loading...</div>
+                    }
+                    <hr />
+                </main>
+            </div>
+        )
     }
-
-    function onEditToy(toy) {
-        const price = +prompt('New price?')
-        const toyToSave = { ...toy, price }
-
-        saveToy(toyToSave)
-            .then((savedToy) => {
-                showSuccessMsg(`Toy updated to price: $${savedToy.price}`)
-            })
-            .catch(err => {
-                showErrorMsg('Cannot update toy')
-            })
-    }
-
-    return (
-        <div>
-            <main>
-                {/* <button className='add-btn' onClick={onAddToy}>Add Random Toy ⛐</button> */}
-                <ToyFilter filterBy={filterBy} onSetFilter={onSetFilter} />
-                {!isLoading ?
-                    <ToyList toys={toys} onRemoveToy={onRemoveToy} onEditToy={onEditToy} />
-                    : <div>Loading...</div>
-                }
-                <hr />
-            </main>
-        </div>
-    )
-}
 

@@ -17,6 +17,7 @@
     opacity: 0;
     transform: translateY(-10px);
     pointer-events: none;
+    z-index: 10;
   }
 
   .app-nav.open {

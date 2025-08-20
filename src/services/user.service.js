@@ -13,12 +13,16 @@ export const userService = {
     getById,
     getLoggedinUser,
     // updateScore,
-    getEmptyCredentials
+    getEmptyCredentials,
+    getEmptyUser,
+    remove,
+    update,
+    getUsers
 }
 
 
 async function getById(userId) {
-    return await httpService.get(BASE_URL + userId)
+    return await httpService.get('user/' + userId)
 }
 
 async function login({ username, password }) {
@@ -41,7 +45,7 @@ function getLoggedinUser() {
 }
 
 function _setLoggedinUser(user) {
-    const userToSave = { _id: user._id, fullname: user.fullname, score: user.score }
+    const userToSave = { _id: user._id, fullname: user.fullname, score: user.score, isAdmin: user.isAdmin }
     sessionStorage.setItem(STORAGE_KEY_LOGGEDIN, JSON.stringify(userToSave))
     return userToSave
 }
@@ -55,6 +59,45 @@ function getEmptyCredentials() {
     }
 }
 
+function saveLoggedinUser(user) {
+    user = {
+        _id: user._id,
+        fullname: user.fullname,
+        imgUrl: user.imgUrl,
+        score: user.score,
+        isAdmin: user.isAdmin
+    }
+    sessionStorage.setItem(STORAGE_KEY_LOGGEDIN_USER, JSON.stringify(user))
+    return user
+}
+
+function getEmptyUser() {
+    return {
+        username: '',
+        password: '',
+        fullname: '',
+        isAdmin: false,
+        score: 100,
+    }
+}
+
+function remove(userId) {
+    return httpService.delete(`user/${userId}`)
+}
+
+async function update({ _id, score }) {
+    const user = await httpService.put(`user/${_id}`, { _id, score })
+
+    // When admin updates other user's details, do not update loggedinUser
+    const loggedinUser = getLoggedinUser() // Might not work because its defined in the main service???
+    if (loggedinUser._id === user._id) saveLoggedinUser(user)
+
+    return user
+}
+
+function getUsers() {
+    return httpService.get(`user`)
+}
 
 // Test Data
 // userService.signup({username: 'bobo', password: 'bobo', fullname: 'Bobo McPopo'})

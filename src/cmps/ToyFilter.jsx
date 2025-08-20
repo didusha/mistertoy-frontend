@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from "react"
 import { utilService } from "../services/util.service.js"
+import { useEffectUpdate } from '../hooks/useEffectUpdate'
 import InputLabel from '@mui/material/InputLabel'
 import MenuItem from '@mui/material/MenuItem'
 import Select from '@mui/material/Select'
@@ -12,7 +13,7 @@ export function ToyFilter({ filterBy, onSetFilter }) {
     const [filterByToEdit, setFilterByToEdit] = useState({ ...filterBy })
     const onSetFilterDebounce = useRef(utilService.debounce(onSetFilter, 300)).current
 
-    useEffect(() => {
+    useEffectUpdate(() => {
         onSetFilterDebounce(filterByToEdit)
     }, [filterByToEdit])
 
