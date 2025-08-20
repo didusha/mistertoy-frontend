@@ -4,9 +4,9 @@ import { useRef, useState } from "react"
 
 const API_KEY = import.meta.env.VITE_GOOGLE_MAP_API    
                  
-    const script = document.createElement('script');
-script.src = `https://maps.googleapis.com/maps/api/js?key=${API_KEY}&libraries=places`;
-document.head.appendChild(script);
+//     const script = document.createElement('script');
+// script.src = `https://maps.googleapis.com/maps/api/js?key=${API_KEY}&libraries=places`;
+// document.head.appendChild(script);
 
 export function AboutUs() {
 
