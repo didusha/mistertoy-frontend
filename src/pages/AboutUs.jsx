@@ -3,7 +3,7 @@ import { toyService } from "../services/toy.service.js"
 import { useRef, useState } from "react"
 
 const API_KEY =
-    import.meta.env.GOOGLE_MAP_API || 'AIzaSyBcLlKvJiWUP1ytSSJ3fbYlGiwZrdNGsQM'
+    import.meta.env.VITE_GOOGLE_MAP_API     // || 'AIzaSyBcLlKvJiWUP1ytSSJ3fbYlGiwZrdNGsQM'
 
 export function AboutUs() {
 
