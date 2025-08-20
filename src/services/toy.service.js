@@ -56,7 +56,7 @@ function getEmptyToy() {
         name: '',
         price: '',
         inStock: false,
-        imgUrl: `https://robohash.org/${utilService.getRandomIntInclusive(1, 10)}?set=set5`,
+        imgUrl: null,                             //`https://robohash.org/${utilService.getRandomIntInclusive(1, 10)}?set=set5`,
         labels: [],
         createdAt: null,
     }

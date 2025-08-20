@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from "react"
 import { toyService } from "../services/toy.service.js"
+import { uploadService } from "../services/upload.service.js"
 import { showErrorMsg, showSuccessMsg } from "../services/event-bus.service.js"
 import { saveToy } from "../store/actions/toy.actions.js"
 import { Link, useNavigate, useParams } from "react-router-dom"
@@ -18,15 +19,20 @@ import {
     Select,
     TextField,
 } from '@mui/material'
+import { useDispatch, useSelector } from "react-redux"
+import { SET_IS_LOADING } from "../store/reducers/toy.reducer.js"
 
 export function ToyEdit() {
     const navigate = useNavigate()
     const [toyToEdit, setToyToEdit] = useState(toyService.getEmptyToy())
+    const isLoading = useSelector(storeState => storeState.toyModule.isLoading)
+    console.log("🚀 ~ ToyEdit ~ isLoading:", isLoading)
+    // console.log("🚀 ~ ToyEdit ~ toyToEdit:", toyToEdit)
     const { toyId } = useParams()
 
     const isOnline = useOnlineStatus()
     const setHasUnsavedChanges = useConfirmTabClose()
-
+    const dispatch = useDispatch() 
     const labels = toyService.getToyLabels()
 
 
@@ -48,8 +54,9 @@ export function ToyEdit() {
         setHasUnsavedChanges(true)
     }
 
-    function onSaveToy(toyToEdit, { resetForm }) {
-        saveToy(toyToEdit)
+    function onSaveToy(toyToEditFormik, { resetForm }) {
+        console.log("formik", toyToEditFormik)
+        saveToy(toyToEditFormik)
             .then(() => {
                 showSuccessMsg('Toy Saved!')
                 resetForm()
@@ -106,6 +113,7 @@ export function ToyEdit() {
                             helperText={touched.price && errors.price}
                             onChange={e => customHandleChange(e, handleChange)}  //dont need handle change function in formik - adding this because of setHasUnsavedChanges hook 
                         />
+
                         <FormControl margin="normal" style={{ minWidth: '20vw' }} variant="outlined">
                             <InputLabel id="labels-label">Labels</InputLabel>
                             <Select
@@ -137,11 +145,21 @@ export function ToyEdit() {
                             }
                             label="In stock"
                         />
+
+                        <input type="file" onChange={async (ev) => {
+                            dispatch({type: SET_IS_LOADING, isLoading: true})
+                            const url = await uploadService.uploadImg(ev)
+                            setFieldValue('imgUrl', url)
+                            dispatch({type: SET_IS_LOADING, isLoading: false})
+                        }}>
+                        </input>
+                        {isLoading && <div>Loading Img..</div>}
                         <div>
                             <Button
                                 variant="contained"
                                 color="primary"
                                 type="submit"
+                                disabled={isLoading}
                             >
                                 {toyToEdit._id ? 'Save' : 'Add'}
                             </Button>
