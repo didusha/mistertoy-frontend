@@ -3,11 +3,10 @@ import { toyService } from "../services/toy.service.js"
 import { useRef, useState } from "react"
 
 const API_KEY =
-    import.meta.env.VITE_GOOGLE_MAP_API    || 'AIzaSyBcLlKvJiWUP1ytSSJ3fbYlGiwZrdNGsQM'
+    import.meta.env.VITE_GOOGLE_MAP_API                 
     const script = document.createElement('script');
 script.src = `https://maps.googleapis.com/maps/api/js?key=${API_KEY}&libraries=places`;
 document.head.appendChild(script);
-console.log("🚀 ~ API_KEY:", API_KEY)
 
 export function AboutUs() {
 
