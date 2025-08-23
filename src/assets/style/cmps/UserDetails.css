@@ -1,0 +1,14 @@
+.user-details {
+    position: relative;
+    padding: .5rem .8rem;
+
+    .user-logo-image {
+        border-radius: 50%;
+        background-color: var(--clr2bg);
+        max-width: max-content;
+        padding: 1.5rem;
+        font-size: 1.5rem;
+        position: absolute;
+        right:1rem;
+    }
+}

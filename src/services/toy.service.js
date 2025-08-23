@@ -80,6 +80,7 @@ function setStoreLocations(storeLocations){
 }
 
 async function addToyMsg(toyId, msg) {
+    console.log("🚀 ~ addToyMsg ~ msg:", msg)
     return httpService.post(BASE_URL + toyId + '/msg', msg )
 }
 

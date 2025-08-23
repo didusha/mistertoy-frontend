@@ -1,0 +1,29 @@
+.review-list {
+    list-style: none;
+    display: flex;
+    gap: 1rem;
+
+    li {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        background-color: var(--clr1);
+        padding: 0.65em;
+        position: relative;
+        border-radius: 10px;
+
+        .btn-delete {
+            position: absolute;
+            bottom: -7px;
+            right: -10px;
+            background-color: transparent;
+            scale: 1;
+
+            &:hover {
+                background-color: transparent;
+                color: initial;
+                scale: 1.2;
+            }
+        }
+    }
+}

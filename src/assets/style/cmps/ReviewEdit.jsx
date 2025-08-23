@@ -29,7 +29,7 @@ export function ReviewEdit({toyId}) {
 	}
 
 	return <form className="review-edit" onSubmit={onAddReview}>
-		<h3>Add review:</h3>
+		<h3>Add a review:</h3>
 		<textarea name="txt" onChange={handleChange} value={reviewToEdit.txt}></textarea>
 		<button>Add</button>
 	</form>

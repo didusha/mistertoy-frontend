@@ -43,16 +43,6 @@ export function ToyDetails() {
         setIsChatOpen(false)
     }
 
-    async function onSaveMsg(msg) {
-        try {
-            const savedMsg = await toyService.addToyMsg(toy._id, msg)
-            setToy(prevToy => ({ ...prevToy, msgs: [...(prevToy.msgs || []), savedMsg] }))
-            showSuccessMsg('Message saved')
-        } catch (err) {
-            showErrorMsg('Cannot save message')
-        }
-    }
-
     async function onRemoveReview(reviewId) {
         try {
             await removeReview(reviewId)
@@ -86,17 +76,18 @@ export function ToyDetails() {
                 <Link className="btn" to={`/toy/edit/${toy._id}`}>Edit</Link>
                 <Link className="btn" to={`/toy`}>Back</Link>
             </div>
+            <hr></hr>
 
             <div className="review-container">
                 {user && <ReviewEdit toyId={toyId} />}
-                <ReviewList reviews={reviews} onRemoveReview={onRemoveReview} />
+                <ReviewList reviews={reviews} onRemoveReview={onRemoveReview} showAboutToy={false} />
             </div>
 
             <button className="chat-icon-btn" onClick={openChat}>💬</button>
             <Popup isOpen={isChatOpen}
                 onClose={closeChat}
                 heading={`Lets Chat!`}>
-                <Chat msgs={toy.msgs || []} user={user} onSend={onSaveMsg} toyId={toyId} />
+                <Chat msgs={toy.msgs || []} user={user} toyId={toyId} />
             </Popup>
 
         </section >

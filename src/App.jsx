@@ -13,6 +13,7 @@ import { ToyIndex } from "./pages/ToyIndex.jsx"
 import { Dashboard } from "./pages/Dashboard.jsx"
 import { UserDetails } from "./pages/UserDetails.jsx"
 
+
 export default function App() {
 
   return (

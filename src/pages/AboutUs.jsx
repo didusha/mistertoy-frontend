@@ -2,12 +2,8 @@ import { AdvancedMarker, APIProvider, Map, Pin, useAdvancedMarkerRef, useMap } f
 import { toyService } from "../services/toy.service.js"
 import { useRef, useState } from "react"
 
-const API_KEY = import.meta.env.VITE_GOOGLE_MAP_API    
+const API_KEY = import.meta.env.VITE_GOOGLE_MAP_API     //|| 'AIzaSyBcLlKvJiWUP1ytSSJ3fbYlGiwZrdNGsQM'
                  
-//     const script = document.createElement('script');
-// script.src = `https://maps.googleapis.com/maps/api/js?key=${API_KEY}&libraries=places`;
-// document.head.appendChild(script);
-
 export function AboutUs() {
 
     const mapDefaultLoc = { lat: 32.0853, lng: 34.7818 }

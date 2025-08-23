@@ -1,0 +1,21 @@
+.review-preview {
+    flex: 1;
+
+    .review-link {
+        text-decoration: underline;
+    }
+
+    pre.review-txt {
+        width: fit-content;
+        padding: 0.5em;
+        font-size: 1rem;
+        background-color: var(--clr-brand2);
+    }
+
+    .review-date {
+        font-size: 1rem;
+        margin: 0 0 0.5em;
+        color: gray;
+    }
+
+}

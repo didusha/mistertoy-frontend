@@ -25,8 +25,13 @@
 @import 'cmps/ToyPreview.css';
 @import 'cmps/ToyDetails.css';
 @import 'cmps/ToyEdit.css';
-@import 'cmps/dashboard.css';
 
+@import 'cmps/ReviewPreview.css';
+@import 'cmps/ReviewList.css';
+@import 'cmps/ReviewEdit.css';
+
+@import 'cmps/UserDetails.css';
+@import 'cmps/dashboard.css';
 /* @import 'cmps/ShoppingToyt.css'; */
 /* @import 'cmps/ToggleBtn.css'; */
 
